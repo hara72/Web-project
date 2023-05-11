@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>SC</title>
+    <script src="https://kit.fontawesome.com/471a585be5.js" crossorigin="anonymous"></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+<nav class="navbar">
+        <div class="navbar__logo">
+            <image class="icon icon-title" src="pp3.png"></image>
+            <a href=""></a>
+        </div>
+        
+        <ul class="navbar__menu">
+        <li><a href="#" onclick="location.href='pop2.html'">Home</a></li>
+        <li><a href="#" onclick="location.href='http://crimemapp.dothome.co.kr/'">Map</a></li>
+        <li><a href="#" onclick="location.href='http://localhost:5001/'">Talk</a></li>
+        <li><a href="#" onclick="location.href='index.html'">FQA</a></li>
+        <li><a href="">Bookings</a></li>
+        
+        </ul>
+        <ul class="navbar__icons">
+            <li></i></li>
+            <li></i></li>
+</ul>
+<a href="" class="navbar__toogleBtn">
+<i class="fa-light fa-bars"></i>
+</a>
+</nav>
+<style type="text/css">
+
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+        .icon-title{
+            width: 66%;
+            height: 66%;
+            max-width: 52px;
+            max-height: 52px;
+        }
+
+        .icon-kakao {
+            width: 100%;
+            height: 100%;
+            max-width: 40px;
+            max-height: 40px;
+        }
+        .icon-github {
+            width: 100%;
+            height: 100%;
+            max-width: 40px;
+            max-height: 40px;
+        }
+        .floating-menu {
+            box-shadow: 0px 0px 10px #b7b7b7;
+            background: white;
+            border-radius: 10px;
+            width: 124px;
+            height: 506px;
+            z-index: 9999;
+            overflow: hidden;
+            position: fixed;
+            top: 220px;
+            right: 115px;
+            padding: 0px;
+            margin-bottom: 0px;
+        }
+
+        .floating-menu a {
+            font-size: 1rem;
+            display: block;
+            color: black;
+            text-decoration: none;
+        }
+        .footer {
+            background-color: #F2F2F2;
+            width: 100%;
+        }
+        #footer-text {
+            color: black;
+            text-decoration: none;
+        }
+        
+        .floating-menu-icon {
+            text-align: center;
+        }
+        .floating-menu-title {
+            text-align: center;
+        }
+        .etc {
+            padding: 18px 18px 30px;
+            width: 100%;
+            height: 100%;
+            max-height: 166px;
+            font-size: 0.8125rem;
+            line-height: 1.5;
+            text-align: left;
+            color: rgba(0, 0, 0, 0.35);
+        }
+        .link_wrapper {
+            width: 100%;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+        </style>
+        
+<section class="hidden-xs floating-menubar">
+            <ul class="floating-menu">
+                <li class="floating-menu-title"><br>
+                    <p>문의 사항</p><br>
+                </li>
+
+                <li class="floating-menu-icon">
+                    <a target="_blank" href="https://pf.kakao.com/_xdsrYxj"
+                       onclick="gtag('event', '플로팅 메뉴바 클릭', {'event_category': '데이트팝 웹', 'event_label': '1:1 카톡문의(PC)'});">
+                        <span>
+                            
+                            <image class="icon icon-kakao"   src="pp.png"></image>
+                        </span>
+                        <div class="icon-text">1:1 카톡문의</div>
+                    </a>
+                </li><br>
+                <li class="floating-menu-icon">
+                    <a target="_blank" href="https://github.com/hara72"
+                       onclick="gtag('event', '플로팅 메뉴바 클릭', {'event_category': '데이트팝 웹', 'event_label': '이메일 문의(PC)'});">
+                        <span>
+                            <image class="icon icon-github" src="pp2.png"></image>
+                        </span>
+                        <div class="icon-text">깃허브 링크</div>
+                    </a>
+                </li>
+
+            </ul>
+        </section>
+        <div class="hidden-xs" id="div_hr_60"></div>
+
+        <div class="hidden-lg hidden-md hidden-sm" id="div_hr_20"></div>
+
+        <footer class="footer">
+            <div class="company_wrapper">
+                <div class="link_wrapper">
+                    <div class="link-item">
+                        <a id="footer-text" target="_blank" href="https://10fingers.datepop.co.kr/press"
+                           onclick="gtag('event', '푸터 클릭', {'event_category': '데이트팝 웹', 'event_label': '회사소개'});">회사소개</a></div>
+                    <div class="link-item">
+                        <a id="footer-text" target="_blank" href="https://10fingers.datepop.co.kr/terms"
+                           onclick="gtag('event', '푸터 클릭', {'event_category': '데이트팝 웹', 'event_label': '이용약관'});">이용약관</a>
+                    </div>
+                    <div class="link-item">
+                        <a id="footer-text" target="_blank" href="https://10fingers.datepop.co.kr/privacy"
+                           onclick="gtag('event', '푸터 클릭', {'event_category': '데이트팝 웹', 'event_label': '개인정보처리방침'});">개인정보처리방침</a>
+                    </div>
+                    <div class="link-item">
+                        <a id="footer-text" target="_blank" href="https://10fingers.datepop.co.kr/data_leakage"
+                           onclick="gtag('event', '푸터 클릭', {'event_category': '데이트팝 웹', 'event_label': '사고대응매뉴얼'});">사고대응매뉴얼</a>
+                    </div>
+                    <div class="link-item">
+                        <a id="footer-text" target="_blank" href="https://ceo.datepop.co.kr/ceo/contact"
+                           onclick="gtag('event', '푸터 클릭', {'event_category': '데이트팝 웹', 'event_label': '제휴문의'});">제휴문의</a>
+                    </div>
+                </div>
+                <div class="etc">
+                    <br>주식회사 텐핑거스(대표 신동해)
+                    <br>서울특별시 구로구 디지털로272, 한신IT타워 617호
+                    <br>사업자등록번호 : 119-86-86868
+                    <br>통신판매업신고 제2017-서울구로-1419호
+                    <br>고객센터: 070-4410-8836 / support@datepop.co.kr
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+</body>
+
+</html>
+
+<!-- body{
+    margin: 0;
+    font-family: 'Source Sans Pro';
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #263343;
+    padding: 8px 12px;
+}
+
+.navbar__logo{
+    font-size: 24px;
+    color: white;
+}
+
+.navbar__logo i {
+    color: #d49466;
+}
+.navbar__menu{
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.navbar__menu li{
+    padding: 8px 12px;
+}
+.navbar__menu li:hover{
+    background-color: #d49466;
+    border-radius: 4px;
+}
+
+.navbar__icons {
+    list-style: none;
+    color: white;
+    display: flex;
+    padding-left: 0;
+}
+
+.navbar__icons li{
+    padding: 8px 12px;
+
+}
+
+.navbar__toogleBtn{
+    position: absolute;
+    right: 32px;
+    font-size: 24px;
+    color: #d49466;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar{
+        flex-direction: columm;
+        align-items: flex-start;
+        padding: 8px 24px;
+    }
+
+    .navbar__menu{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        display: none;
+    }
+
+    .navbar__menu li{
+        width: 100%;
+        text-align: center;
+    }
+    .navbar__icons{
+        justify-content: center;
+        width: 100%;
+        display: none;
+    }
+    .navbar__toogleBtn{
+        font-display: block;
+    }
+    .navbar__menu.active,
+    .navbar__icons.active{
+        display: flex;
+    }
+} -->
