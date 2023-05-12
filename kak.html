@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://127.0.0.1:5501/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hara's WebPage</title>
+    <link rel="stylesheet" href="./kak_files/style.css">
+    <script src="./kak_files/jquery-3.4.1.js.다운로드"></script>
+    <script src="./kak_files/kakao.js.다운로드"></script>
+    
+    <script src="./kak_files/js" async=""></script></head>
+
+    <body>
+
+    
+        <div class="background"></div>
+        <section class="login-form">
+        <h1>Digs by hara72</h1>
+        <form action="http://127.0.0.1:5501/index.html">
+            <div class="int-area">
+                <input type="email" name="id" id="signUpEmail" autocomplete="off" required="">
+            <label for="id">USER NAME</label>
+        </div>
+        <div class="int-area">
+            <input type="password" name="pw" id="signUpPassword" autocomplete="off" required="">
+            <label for="pw">PASSWORD</label>
+            </div>
+            <div class="btn-area">
+                <button id="btn" type="submit">LOGIN</button>
+            </div>
+            <div class="creatID">
+                <button id="signUpButton" type="submit2">CREAT ID</button>
+                </div>
+            <div class="kakao">   
+                <button id="kk" type="submit3">KaKao Login</button>
+            </div>
+            
+         
+  <!-- <a id="kakao-login-btn"></a> -->
+  <a id="kk"></a>
+	
+	<div id="result"></div>
+<script type="text/javascript">
+  function unlinkApp() {
+    Kakao.API.request({
+      url: '/v2/user/unlink',
+      success: function(res) {
+        alert('success: ' + JSON.stringify(res))
+      },
+      fail: function(err) {
+        alert('fail: ' + JSON.stringify(err))
+      },
+    })
+  }
+</script>
+ 
+<script type="text/javascript">
+Kakao.init('b5348e1d89cd41d2032de5ffc1adc690');
+console.log(Kakao.isInitialized());
+ 
+  Kakao.Auth.createLoginButton({
+    container: '#kk',
+    success: function(authObj) {
+      Kakao.API.request({
+        url: '/v2/user/me',
+        success: function(result) {
+          $('#result').append(result);
+          id = result.id
+          connected_at = result.connected_at
+          kakao_account = result.kakao_account
+          $('#result').append(kakao_account);
+          resultdiv="<h2>로그인 성공 !!"
+          resultdiv += '<h4>id: '+id+'<h4>'
+          resultdiv += '<h4>connected_at: '+connected_at+'<h4>'
+          email ="";
+          gender = "";
+          if(typeof kakao_account != 'undefined'){
+        	  email = kakao_account.email;
+        	  gender = kakao_account.gender;
+          }
+          resultdiv += '<h4>email: '+email+'<h4>'
+          resultdiv += '<h4>gender: '+gender+'<h4>'
+          $('#result').append(resultdiv);
+          
+        },
+        fail: function(error) {
+          alert(
+            'login success, but failed to request user information: ' +
+              JSON.stringify(error)
+          )
+        },
+      })
+    },
+    fail: function(err) {
+      alert('failed to login: ' + JSON.stringify(err))
+    },
+  })
+  </script>
+    
+            <!-- <button type="submit" id="signUpButton">CREAT ID</button> -->
+        </form>
+        <div class="caption">
+            <a href="http://127.0.0.1:5501/index.html">Forgot Password?</a>
+        </div>
+        </section>
+
+        <!-- Firebase JavaScript SDK 추가 -->
+
+
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            var firebaseEmailAuth; //파이어베이스 email 인증 모듈 전역변수
+            var firebaseDatabase; //파이어베이스 db 모듈 전역변수
+            var userInfo; //가입한 유저의 정보. object 타입
+
+            import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+
+    // "Forgot Password?" 링크를 클릭한 경우
+        document.querySelector('.caption a').addEventListener('click', (event) => {
+        event.preventDefault();
+        const email = document.getElementById('signUpEmail').value;
+        const auth = getAuth();
+        
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+            console.log("Password reset email sent");
+            // TODO: Show a message to the user indicating that a password reset email has been sent
+            })
+            .catch((error) => {
+            console.error(error);
+            // TODO: Show an error message to the user
+    });
+});
+
+            const firebaseConfig = {
+              apiKey: "AIzaSyAdL-ZJ4IXQDGAubONtEsSOzPYKQZiuW1k",
+              authDomain: "logchat-86018.firebaseapp.com",
+              projectId: "logchat-86018",
+              storageBucket: "logchat-86018.appspot.com",
+              messagingSenderId: "843822180081",
+              appId: "1:843822180081:web:765b059f3a7b0539202b50",
+              measurementId: "G-SQM24891VY"
+            };
+            
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            console.log(app)
+
+          
+            import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+
+            
+    document.getElementById('signUpButton').addEventListener('click', (event) =>{
+                event.preventDefault()
+                const email = document.getElementById('signUpEmail').value
+                const password = document.getElementById('signUpPassword').value
+                const auth = getAuth();
+
+
+                document.getElementById('btn').addEventListener('click', (event) => {
+                    event.preventDefault();
+                    // 로그인 성공 여부를 체크하는 코드 작성
+                    // 로그인이 성공하면 다음 코드를 실행
+                    window.location.href = 'http://127.0.0.1:5500/html/pop2.html';
+                });
+
+
+                
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+            console.log(userCredential)
+            // Signed in
+            const user = userCredential.user;
+            // ...
+        })
+    .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+                });
+        })
+    
+        console.log('hello')
+        console.log(app)
+
+        
+    </script>
+    
+        
+<!-- 
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+ --&gt;
+<!-- <script>
+    let id = $('#id');
+    let pw = $('#id');
+    let btn = $('#id');
+
+    $(btn).on('click', finction() {
+        if($(id).val() ==""){
+            $(id).next('label').addClass('warning');
+        }
+        else if($(pw).val() == "") {
+            $(pw).next('label').addClass('warning');
+    )}
+    
+</script> -->
+<script>
+    let id = document.querySelector('#id')
+    let pw = document.querySelector('#pw')
+    let btn = document.querySelector('#btn')
+    let submit3 = document.querySelector('#submit3')
+
+    btn.addEventListener('click', () => {
+        if(id.value == "") {
+            label = id.nextElementSibling
+            label.classList.add('warning')
+            setTimeout(() => {
+                label.classList.remove('warning')
+            }, 1500)
+        } else if(pw.value == "") {
+            label = pw.nextElementSibling
+            label.classList.add('warning')
+            setTimeout(() => {
+                label.classList.remove('warning')
+            }, 1500)
+        }
+    })
+
+
+//     window.Kakao.init("b5348e1d89cd41d2032de5ffc1adc690");
+
+//         function kakaoLogin(){
+//             window.Kakao.Auth.login({
+//                 scope:'profile_nickname, account_email',
+//                 success: function(auth0bj){
+//                     console.log(auth0bj);
+//                     window.Kakao.API.request({
+//                     url:'/v2/user/me',
+//                     success: res => {
+//                         const kakao_account = res.kakao_account;
+//                         console.log(kakao_account);
+
+                        
+//                 }
+//             });
+//         }
+//     });
+// }
+    
+
+</script>
+<!-- Code injected--></body></html>
